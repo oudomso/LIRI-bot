@@ -3,6 +3,7 @@ var keys = require("./keys.js");
 var fs = require('fs');
 var axios = require("axios");
 var Spotify = require('node-spotify-api');
+var moment = require("moment");
 
 
 var spotify = new Spotify(keys.spotify);
@@ -133,7 +134,9 @@ function concertSearch(bandName){
         console.log("Result for "+ bandName + " Concert: ");
         console.log(details.venue.name);
         console.log(details.venue.city + ", " + details.venue.country);
-        console.log(details.datetime);
+
+        var date = moment(details.datetime).format("MM/DD/YYYY");
+        console.log(date);
         console.log("*******************************");
         
     })
